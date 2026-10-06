@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  formulae:
+    runs-on: macos-15
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+
+      - name: Check style
+        run: brew style natbro/tap
+
+      - name: Audit, build and test every formula
+        run: |
+          for f in $(brew tap-info --json natbro/tap | jq -r '.[0].formula_names[]'); do
+            brew audit --strict "$f"
+            brew install --build-from-source "$f"
+            brew test "$f"
+          done
