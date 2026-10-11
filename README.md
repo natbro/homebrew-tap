@@ -9,6 +9,7 @@ brew install natbro/tap/apfs-compact
 | Formula | Description |
 |---|---|
 | [apfs-compact](https://github.com/natbro/apfs-compact) | Replace duplicate and near-duplicate files with APFS clones |
+| [winewatch](https://github.com/natbro/wine-watch) | Menu bar indicator for lingering Wine/CrossOver processes |
 
 ## Updating a formula
 
